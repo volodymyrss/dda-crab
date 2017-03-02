@@ -3,8 +3,8 @@ import os
 
 class Crab:
     def __init__(self):
-         self.Crab=load(osa.environ['HOME']+"/soft/energy_calibration/crab_spectrum/example/crab_example.npy")
-         self.Crab_ecs=genfromtxt(osa.environ['HOME']+"/soft/energy_calibration/crab_spectrum/example/crab_unfolded_example.txt").transpose()
+         self.Crab=load(os.environ['HOME']+"/soft/energy_calibration/crab_spectrum/example/crab_example.npy")
+         self.Crab_ecs=genfromtxt(os.environ['HOME']+"/soft/energy_calibration/crab_spectrum/example/crab_unfolded_example.txt").transpose()
 
     def counts_in(self,e1,e2):
         _e1,_e2,_c=self.Crab
