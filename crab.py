@@ -10,6 +10,8 @@ class Crab:
             self.Crab_ecs=genfromtxt(os.environ['HOME']+"/soft/energy_calibration/crab_spectrum/example/crab_unfolded_example.txt").transpose()
 
             self.e1, self.e2, self.c=self.Crab
+            self.de=(self.e2-self.e1)/2.
+
             self.ecs_ec, self.ecs_de, self.ecs_f, self.ecs_fe=self.Crab_ecs
             self.ecs_e1=self.ecs_ec-self.ecs_de
             self.ecs_e2=self.ecs_ec+self.ecs_de
@@ -18,7 +20,10 @@ class Crab:
             self.Crab_jemx=genfromtxt(os.environ['HOME']+"/soft/energy_calibration/crab_spectrum/example/crab_jemx_counts.qdp")
             self.Crab_jemx_ecs=genfromtxt(os.environ['HOME']+"/soft/energy_calibration/crab_spectrum/example/crab_jemx_uf.qdp").transpose()
 
-            self.e1, self.e2, self.c, self.ce, self.m=self.Crab_jemx.transpose()
+            self.ec, self.de, self.c, self.ce, self.m=self.Crab_jemx.transpose()
+            self.e1=self.ec-self.de
+            self.e2=self.ec+self.de
+
             self.ecs_ec, self.ecs_de, self.ecs_f, self.ecs_fe,self.ecs_m=self.Crab_jemx_ecs
             self.ecs_f*=1.6e-9
             self.ecs_fe*=1.6e-9
